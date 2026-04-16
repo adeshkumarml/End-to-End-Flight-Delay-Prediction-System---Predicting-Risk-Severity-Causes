@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-from src.predict_v1 import predict_api
 from src.utils import load_config
 
 config = load_config("config/ui_config.yaml")
@@ -52,15 +51,15 @@ if st.button("PREDICT"):
                     st.error("HIGH DELAY RISK")
                     st.error(f"Delay Severity: {result['severity']}")
 
-                    st.subheader("Possible Causes")
-                    cause_map = config["ui"]["cause_map"]
+        #           st.subheader("Possible Causes")
+        #           cause_map = config["ui"]["cause_map"]
 
-                    for cause, prob in result["top_causes"]:
-                        ui_cause = cause_map.get(cause)
-                        percent = int(prob * 100)
+        #           for cause, prob in result["top_causes"]:
+        #                ui_cause = cause_map.get(cause)
+        #                percent = int(prob * 100)
 
-                        st.write(f"{ui_cause} ({percent}%)")
-                        st.progress(percent)
+        #                st.write(f"{ui_cause} ({percent}%)")
+        #                st.progress(percent)
             else:
                 st.error("API Error!")
         
