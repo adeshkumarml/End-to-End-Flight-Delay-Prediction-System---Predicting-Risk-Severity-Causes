@@ -3,7 +3,7 @@
 echo "Setting up project"
 
 echo "Downloading model artifacts"
-gdown https://drive.google.com/uc?id=1pjk69tDNgDaj4Z2y-ZBK8rkly8m_2uwm -O models.zip
+gdown https://drive.google.com/uc?id=1x-vDdDvaylNWd05EeRwlHEHunGdVMoLE -O models.zip
 
 echo "Unzipping models"
 unzip models.zip -d .
