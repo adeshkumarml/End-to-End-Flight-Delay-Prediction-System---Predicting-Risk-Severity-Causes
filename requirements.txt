@@ -1,0 +1,11 @@
+pandas==2.3.3
+numpy
+scikit-learn
+xgboost
+fastapi
+uvicorn
+streamlit
+joblib
+gdown
+requests
+pyyaml
