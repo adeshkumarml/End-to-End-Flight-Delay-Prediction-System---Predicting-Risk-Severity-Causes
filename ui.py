@@ -38,7 +38,7 @@ if st.button("PREDICT"):
     
     with st.spinner("Predicting..."):
         try:
-            response = requests.post("http://127.0.0.1:8000/predict", json = input_data)
+            response = requests.post("https://flight-delay-risk-severity-and-cause-api.onrender.com/predict", json = input_data)
             if response.status_code == 200:
                 result = response.json()
 
