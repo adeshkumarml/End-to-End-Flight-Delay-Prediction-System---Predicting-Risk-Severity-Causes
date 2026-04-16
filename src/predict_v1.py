@@ -9,11 +9,11 @@ ohe_cols = config["columns"]["ohe_cols"]
 
 risk_model = joblib.load("models/final/risk_model_v1.pkl")
 severity_model = joblib.load("models/final/severity_model.pkl")
-cause_model = joblib.load("models/final/cause_model.pkl")
+# cause_model = joblib.load("models/final/cause_model.pkl")
 risk_threshold = joblib.load("models/final/risk_threshold.pkl")
 freq_maps = joblib.load("models/final/freq_maps.pkl")
 ohe = joblib.load("models/final/ohe.pkl")
-le = joblib.load("models/final/le.pkl")
+# le = joblib.load("models/final/le.pkl")
 feature_space = joblib.load("models/final/feature_space.pkl")
 logger.info("All artifacts loaded")
 
@@ -39,15 +39,15 @@ def predict_from_df(df):
     severity_preds = severity_model.predict(df)
     logger.info("Severity predicted")
 
-    cause_probs = cause_model.predict_proba(df)
-    top_three_idx = cause_probs.argsort(axis = 1)[:,-3:][:,::-1]
-    top_three_causes = []
-    for i, row in enumerate(top_three_idx):
-        labels = le.inverse_transform(row.flatten())
-        probs = cause_probs[i][row]
-        result = list(zip(labels, probs))
-        top_three_causes.append(result)
-    logger.info("Cause predicted")
+    # cause_probs = cause_model.predict_proba(df)
+    # top_three_idx = cause_probs.argsort(axis = 1)[:,-3:][:,::-1]
+    # top_three_causes = []
+    # for i, row in enumerate(top_three_idx):
+    #    labels = le.inverse_transform(row.flatten())
+    #    probs = cause_probs[i][row]
+    #    result = list(zip(labels, probs))
+    #    top_three_causes.append(result)
+    # logger.info("Cause predicted")
 
     risk_map = config["mappings"]["risk"]
     severity_map = config["mappings"]["severity"]
@@ -57,14 +57,14 @@ def predict_from_df(df):
         risk = risk_preds[i]
         if risk == 0:
             result = {"risk": risk_map[risk], 
-                      "severity": "No Delay", 
-                      "top_causes": []}
+                      "severity": "No Delay"}
+    #                  "top_causes": []}
         else:
             severity = severity_map[severity_preds[i]]
-            causes = [(label, round(prob, 2)) for label, prob in top_three_causes[i]]
+    #       causes = [(label, round(prob, 2)) for label, prob in top_three_causes[i]]
             result =  {"risk" : risk_map[risk],
-                       "severity" : severity,
-                       "top_causes" : causes}
+                       "severity" : severity}
+    #                  "top_causes" : causes}
         results.append(result)
     logger.info("Returning consoliated predictions")
     return results
