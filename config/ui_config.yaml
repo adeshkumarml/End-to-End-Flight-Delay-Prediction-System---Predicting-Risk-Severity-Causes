@@ -1,0 +1,26 @@
+ui:
+  airlines:
+    - Allegiant Air
+    - American Airlines Inc.
+    - Delta Air Lines Inc.
+    - Endeavor Air Inc.
+    - Envoy Air
+    - ExpressJet Airlines LLC d/b/a aha!
+    - Frontier Airlines Inc.
+    - Hawaiian Airlines Inc.
+    - Horizon Air
+    - JetBlue Airways
+    - Mesa Airlines Inc.
+    - PSA Airlines Inc.
+    - Republic Airline
+    - SkyWest Airlines Inc.
+    - Southwest Airlines Co.
+    - Spirit Air Lines
+    - United Air Lines Inc.
+
+  cause_map:
+    DELAY_DUE_CARRIER: "Carrier Delay"
+    DELAY_DUE_WEATHER: "Weather Delay"
+    DELAY_DUE_NAS: "Air Traffic Delay"
+    DELAY_DUE_SECURITY: "Security Delay"
+    DELAY_DUE_LATE_AIRCRAFT: "Late Aircraft"

@@ -1,0 +1,43 @@
+columns:
+  delay_cols:
+    - DELAY_DUE_CARRIER
+    - DELAY_DUE_WEATHER
+    - DELAY_DUE_NAS
+    - DELAY_DUE_SECURITY
+    - DELAY_DUE_LATE_AIRCRAFT
+
+  cols_to_keep:
+    - FL_DATE
+    - AIRLINE
+    - ORIGIN
+    - DEST
+    - CRS_DEP_TIME
+    - DEP_DELAY
+    - DELAY_DUE_CARRIER
+    - DELAY_DUE_WEATHER
+    - DELAY_DUE_NAS
+    - DELAY_DUE_SECURITY
+    - DELAY_DUE_LATE_AIRCRAFT
+
+  freq_cols:
+    - ORIGIN
+    - DEST
+
+  ohe_cols:
+    - AIRLINE
+
+  
+data:
+  raw_data_path: data/raw/flights_sample.csv
+
+
+
+mappings:
+  risk:
+    0 : "Low delay risk"
+    1 : "High delay risk"
+
+  severity:
+    0 : "No Delay"
+    1 : "Minor Delay"
+    2 : "Major Delay"
